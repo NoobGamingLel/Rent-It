@@ -1,0 +1,83 @@
+
+public class Test {
+ public static void main(String[]args) {
+//  Customer A = new Customer("Angy", "OOO", "Johnson", "Maroon", 42, "catlover@gmail.com");
+//  Customer Joe = new Customer("Becca", "Green", "Rim", "Jack", 37, "joe@gmail.com");
+//  Customer Jamie = new Customer("Janice23", "Lex", "Jack", "Joke", 45,"Jamie@gmail.com");
+//  Customer Yeti = new Customer("YetiChillz", "Xio", "Johnson", "OG", 42, "catlover@gmail.com");
+//  Customer Yumi = new Customer("Yumi", "OOO", "Bratt", "Lm", 42, "catlover@gmail.com");
+//  CustomerManager Cmanager = new CustomerManager();
+//  Cmanager.addCustomer(Joe);
+//  Cmanager.addCustomer(Jamie);
+//  Cmanager.addCustomer(Yeti);
+//  Cmanager.addCustomer(A);
+//  Cmanager.addCustomer(Yumi);
+//  Cmanager.sortByUsername();
+  //for(int i=0; i<Cmanager.size(); i++) {
+  // System.out.println(Cmanager.getCustomer(i).getUsername());
+  //}
+  
+  final String customerFilepath = "C:/Users/ASUS/Desktop/ICS4U Final project/Database/Customer/CustomerList.csv";
+  CustomerManager Cmanager = new CustomerManager();
+  Cmanager.setCustomerList(DatabaseTools.loadCustomerData(customerFilepath));
+  //new CustomerTable(Cmanager);
+  
+  
+  
+//  RentInfo x = new RentInfo(5, true);
+//  Item car1 = new Item("A7", "Blue", "BMW", "Car", Joe, x);
+//  Item car2 = new Item("B5", "Angry", "BMW", "Car", Joe, x);
+//  Item car3 = new Item("C5", "X", "BMW", "Car", Joe, x);
+////  //System.out.print(car.getName());
+//  ItemManager u = new ItemManager();
+//  Imanager.addItem(car3);
+//  Imanager.addItem(car2);
+//  Imanager.addItem(car1);
+////  System.out.println(u.searchByName("I6"));
+//  Imanager.sortByColor();
+//  for(int i=0; i<Imanager.size(); i++) {
+//   System.out.println(Imanager.getItem(i).getName());
+//  }
+//  
+//  ArrayList<Integer> u = Cmanager.searchByUsername("y");
+//  for(int i=0; i<Cmanager.size(); i++) {
+//   for(int j=0; j<u.size(); j++) {
+//    if(u.get(j)==i)
+//     System.out.print(Cmanager.getCustomer(i).getUsername());
+//   }
+//  }
+//  new ItemTable(Cmanager);
+  
+//  ItemManager Imanager = new ItemManager();
+// 
+//  Item car1 = new Item("A7", "Blue", "Apple", "Jeep", "Levi", 5);
+//  Item car2 = new Item("B5", "Angry", "Honda", "Car", "John", 5);  
+//  Item car3 = new Item("C5", "X", "Samsung", "Ship", "Joe", 15);
+  
+//  Imanager.addItem(car1);
+//  Imanager.addItem(car2);
+//  Imanager.addItem(car3);
+////  Booking.book("Lily", car1);
+////  System.out.print(car1.getRentStatus());
+////  System.out.print(car1.getRentorUsername());
+//  String itemFilepath = "C:/Users/ASUS/Desktop/ICS4U Final project/Database/Item/ItemList.csv";
+//  ItemManager Imanager = new ItemManager();
+//  Imanager.setItemList(DatabaseTools.loadItemData(itemFilepath));
+  //final String currentUsername = "John";
+  //new ItemTable(Imanager, currentUsername);
+  new LoginPanel();
+
+  //new CustomerTable(Cmanager);
+  //System.out.print(ItemManager.estimateIncome(0, Imanager.getItemList()));
+  
+//   String adminFilepath = "C:/Users/ASUS/Desktop/ICS4U Final project/Database/Admin/AdminList.csv";
+//   AdminManager Amanager = new AdminManager();
+//   Amanager.setAdminList(DatabaseTools.loadAdminData(adminFilepath));
+//   new AdminTable(Amanager);
+//   Admin x = new Admin("Hola", "Ahi", "TO");
+//   Admin u = new Admin("IHIH", "HOJII", "QWE");
+//   Amanager.addAdmin(x);
+//   Amanager.addAdmin(u);
+//   DatabaseTools.saveAdminData(adminFilepath, Amanager.getAdminList());
+ }
+}
