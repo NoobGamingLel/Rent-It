@@ -5,9 +5,11 @@ import java.util.ArrayList;
 public class AdminManager {
 	private ArrayList<Admin> adminList = new ArrayList<Admin>() ;
 	
+	/* Empty constructor */
 	public AdminManager() {
 	}
 	
+	/* Constructor with argument */
 	public AdminManager(ArrayList<Admin> input) {
 		adminList=input;
 	}
@@ -15,7 +17,6 @@ public class AdminManager {
 	public Admin getAdmin(int i) {
 		return this.adminList.get(i);
 	}
-	
 	
 	public ArrayList<Admin> getAdminList(){
 		return this.adminList;

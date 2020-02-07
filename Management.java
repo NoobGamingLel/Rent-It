@@ -23,8 +23,8 @@ public class Management extends JFrame{
 	private JTextField usernameField;
 	private JLabel lblPassword;
 	private JPasswordField passwordField;
-	private final String customerFilepath = "E:/David Phan/ICS4U Final project/Database/Customer/CustomerList.csv";
-	private final String adminFilepath = "E:/David Phan/ICS4U Final project/Database/Admin/AdminList.csv";
+	private final String customerFilepath = "./Database/Customer/CustomerList.csv";
+	private final String adminFilepath = "./Database/Admin/AdminList.csv";
 	
 	public Management() {
 		getContentPane().setBackground(Color.WHITE);
@@ -131,10 +131,10 @@ public class Management extends JFrame{
 		getContentPane().add(btnSignUp);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("E:/David Phan/ICS4U Final project/Database/logo.jpg"));
+		label.setIcon(new ImageIcon("./Database/logo.jpg"));
 		label.setBounds(42, 38, 350, 93);
 		getContentPane().add(label);
 		setVisible(true);
-		System.out.println("RentIt - A ICS project by David Phan");
+		System.out.println("RentIt by David Phan");
 	}
 }

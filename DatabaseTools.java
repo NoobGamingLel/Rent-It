@@ -16,9 +16,9 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 public class DatabaseTools {
 	private static Scanner x;
-	private static final String customerFilepath="E:/David Phan/ICS4U Final project/Database/Customer/CustomerList.csv";
-	private static final String adminFilepath ="E:/David Phan/ICS4U Final project/Database/Admin/AdminList.csv";
-	private static final String itemFilepath ="E:/David Phan/ICS4U Final project/Database/Item/ItemList.csv";;
+	private static final String customerFilepath="./Database/Customer/CustomerList.csv";
+	private static final String adminFilepath ="./Database/Admin/AdminList.csv";
+	private static final String itemFilepath ="./Database/Item/ItemList.csv";;
 	
 	
 	public static ArrayList<Customer> loadCustomerData(){

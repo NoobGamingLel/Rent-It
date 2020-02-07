@@ -88,7 +88,7 @@ public class ItemTable extends JFrame {
 
 		ItemTable.showAll(table, Imanager);
 
-		JButton btnClearTable = new JButton("Clear table");
+		JButton btnClearTable = new JButton("Clear");
 		btnClearTable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DefaultTableModel model = (DefaultTableModel)table.getModel();

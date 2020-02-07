@@ -34,7 +34,7 @@ class CustomerTable extends JFrame {
 	private static JTextField lastNameField;
 	private static JTextField firstNameField;
 	private static JTextField ageField;
-	private final static String customerFilepath = "E:/David Phan/ICS4U Final project/Database/Customer/CustomerList.csv";
+	private final static String customerFilepath = "./Database/Customer/CustomerList.csv";
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public CustomerTable(CustomerManager Cmanager) {

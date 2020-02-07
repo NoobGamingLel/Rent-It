@@ -25,7 +25,7 @@ public class SignUpPane extends JFrame {
 	private JTextField firstNameField;
 	private JTextField ageField;
 	private JTextField emailField;
-	final static String customerFilepath = "E:/David Phan/ICS4U Final project/Database/Customer/CustomerList.csv";
+	final static String customerFilepath = "./Database/Customer/CustomerList.csv";
 
 	/**
 	 * Launch the application.

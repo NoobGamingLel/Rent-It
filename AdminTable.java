@@ -106,7 +106,7 @@ public class AdminTable extends JFrame {
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				final String adminFilepath = "E:/David Phan/ICS4U Final project/Database/Admin/AdminList.csv";
+				final String adminFilepath = "./Database/Admin/AdminList.csv";
 				String username = usernameField.getText();
 				String password = passwordField.getText();
 				String branch = branchField.getText();
