@@ -31,7 +31,7 @@ javac *.java
 
 Now run the program by calling the file called **Simulation**:
 ```
-java simulation
+java Simulation
 ```
 
 You should now be prompted with the application window. Create an account to begin using.  
