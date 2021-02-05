@@ -1,4 +1,5 @@
 # Rent-It
+![image](https://user-images.githubusercontent.com/29266892/107098445-3a640980-67dd-11eb-93cd-6a0ee3522e10.png)  
 This is the final project for ICS4U - Grade 12 Computer Science course taken in 2017. Developed using Eclipse IDE and WindowsBuilder tool.  
 The idea of this project was to create an application for users to lease items instead of selling it like other platforms.  
 
