@@ -1,3 +1,7 @@
+import Model.*;
+import View.*;
+import Controller.*;
+
 public class Simulation {
  public static void main(String[]args) {
   final String customerFilepath = "./Database/Customer/CustomerList.csv";
