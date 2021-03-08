@@ -1,10 +1,13 @@
-/* This class provides tools to
+package Controller;
+/** This class provides tools to
  * Read data from the files and store it into an array list
  * Save data from the array list to the files
  * Registers and write new account information into files
  * Check for unique username and unique item name for each username
  * Reads username and password and compares it to database to authenticate users
  */
+
+import Model.*;
 
 import java.util.Scanner;
 import java.util.ArrayList;

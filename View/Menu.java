@@ -1,7 +1,13 @@
-/* Dislayed when the authenticated user is an Admin
+package View;
+/** Dislayed when the authenticated user is an Admin
  * This frames displays buttons to launch AdminTable, CustomerTable, ItemTable
  * Signout Button
  */
+
+import Controller.*;
+import View.*;
+import Model.*;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;

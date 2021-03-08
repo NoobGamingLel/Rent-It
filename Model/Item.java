@@ -1,4 +1,5 @@
-/* This class is used as a blueprint to create Item objects
+package Model;
+/** This class is used as a blueprint to create Item objects
  * Uses variables such as name, color, manufacturer, category, ....
  * To store information about the items
  */

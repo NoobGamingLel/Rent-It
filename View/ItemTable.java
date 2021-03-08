@@ -1,4 +1,5 @@
-/* This class is a Jframe used to display information from the ItemManager
+package View;
+/** This class is a Jframe used to display information from the ItemManager
  * Provides buttons to add and remove Items
  * Fields to add and edit item's information
  * Search and sort items
@@ -7,6 +8,10 @@
  * Button to log out
  * This class is mainly for business uses.
  */
+
+import Model.*;
+import Controller.*;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

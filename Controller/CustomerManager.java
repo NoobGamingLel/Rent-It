@@ -1,7 +1,11 @@
-/* This class is mainly used to store and manipulate Objects of type Admin
+package Controller;
+/** This class is mainly used to store and manipulate Objects of type Admin
  * Inside of an array list of object
  * Provides method to search and sort depending on a selected criteria
  */
+
+import Model.*;
+
 import java.util.ArrayList;
 public class CustomerManager {
 	private ArrayList<Customer> customerList = new ArrayList<Customer>();

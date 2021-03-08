@@ -1,7 +1,11 @@
-/* This class is a Jframe used to display information from the AdminManager
+package View;
+/** This class is a Jframe used to display information from the AdminManager
  * Provides a button to add new admins.
  * This class is mainly for Administrative uses.
  */
+
+import Model.*;
+import Controller.*;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

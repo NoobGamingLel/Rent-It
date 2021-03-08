@@ -1,4 +1,5 @@
-/* This class is used as a blueprint to create Customer objects
+package Model;
+/** This class is used as a blueprint to create Customer objects
  * Uses variables such as username and password from its super class
  * Uses variables such as first & last name, age and email to store other information.
  */

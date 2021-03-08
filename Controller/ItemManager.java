@@ -1,7 +1,11 @@
-/* This class is mainly used to store and manipulate Objects of type Item
+package Controller;
+/** This class is mainly used to store and manipulate Objects of type Item
  * Inside of an array list of objects
  * Provides method to search and sort depending on a selected criteria
  */
+
+import Model.*;
+
 import java.util.ArrayList;
 public class ItemManager {
 	private ArrayList<Item> itemList = new ArrayList<Item>();

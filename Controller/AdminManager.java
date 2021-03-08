@@ -1,6 +1,10 @@
-/* This class is mainly used to store and manipulate Objects of type Admin
+package Controller;
+/** This class is mainly used to store and manipulate Objects of type Admin
  * Inside of an array list of object
  */
+
+import Model.*;
+
 import java.util.ArrayList;
 public class AdminManager {
 	private ArrayList<Admin> adminList = new ArrayList<Admin>() ;

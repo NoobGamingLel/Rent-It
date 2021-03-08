@@ -1,10 +1,15 @@
-/* This class is a Jframe used to display information from the CustomerManager
+package View;
+/** This class is a Jframe used to display information from the CustomerManager
  * Provides buttons to add and remove Customers
  * Fields to add and edit customer's information
  * Search and sort customers
  * Button to save the data.
  * This class is mainly for Administrative uses.
  */
+
+import Model.*;
+import Controller.*;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;

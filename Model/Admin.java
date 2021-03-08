@@ -1,4 +1,5 @@
-/* This class is used as a blueprint to create Admin objects
+package Model;
+/** This class is used as a blueprint to create Admin objects
  * Uses variables such as username and password from its super class
  * Uses a variable called branch to store which branch this employee is working a
  */
