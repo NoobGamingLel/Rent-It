@@ -557,6 +557,8 @@ public class ItemTable extends JFrame {
 					results = Imanager.searchByColor(query);
 				} else if (selected_1.toString().equals("Manufacturer")) {
 					results = Imanager.searchByManufacturer(query);
+				} else if (selected_1.toString().equals("Category")) {
+					results = Imanager.searchByCategory(query);
 				} else if (selected_1.toString().equals("Owner")) {
 					if (!query.isEmpty() || !query.equals(""))
 						results = Imanager.searchByOwnerUsername(query);

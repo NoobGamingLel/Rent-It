@@ -5,10 +5,10 @@
         ".class"
     ],
     "files.exclude": {
-        "**/.class": true,
         "**/.classpath": true,
         "**/.factorypath": true,
         "**/.project": true,
-        "**/.settings": true
+        "**/.settings": true,
+        "**/*.class": true
     }
 }
