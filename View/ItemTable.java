@@ -1,4 +1,5 @@
 package View;
+
 /** This class is a Jframe used to display information from the ItemManager
  * Provides buttons to add and remove Items
  * Fields to add and edit item's information
@@ -34,7 +35,6 @@ import java.awt.Color;
 @SuppressWarnings("serial")
 public class ItemTable extends JFrame {
 
-
 	private JPanel contentPane;
 	private JTable table;
 	private static JTextField searchField;
@@ -47,7 +47,6 @@ public class ItemTable extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-
 
 	/**
 	 * Create the frame.
@@ -67,16 +66,10 @@ public class ItemTable extends JFrame {
 		contentPane.add(scrollPane);
 
 		table = new JTable();
-		table.setModel(new DefaultTableModel(
-				new Object[][] {
-				},
-				new String[] {
-						"Name", "Color", "Manufacturer", "Category", "Owner", "Price", "Status", "Rentor"
-				}
-				) {
-			boolean[] columnEditables = new boolean[] {
-					false, true, true, false, false, false, true, false
-			};
+		table.setModel(new DefaultTableModel(new Object[][] {},
+				new String[] { "Name", "Color", "Manufacturer", "Category", "Owner", "Price", "Status", "Rentor" }) {
+			boolean[] columnEditables = new boolean[] { false, true, true, false, false, false, true, false };
+
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
 			}
@@ -96,13 +89,13 @@ public class ItemTable extends JFrame {
 		JButton btnClearTable = new JButton("Clear");
 		btnClearTable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DefaultTableModel model = (DefaultTableModel)table.getModel();
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
 				model.setRowCount(0);
 
 			}
 		});
 		btnClearTable.setBounds(785, 52, 89, 23);
-		if(currentUsername.equals(""))
+		if (currentUsername.equals(""))
 			contentPane.add(btnClearTable);
 
 		JLabel lblSortBy = new JLabel("Sort by:");
@@ -110,7 +103,8 @@ public class ItemTable extends JFrame {
 		contentPane.add(lblSortBy);
 
 		final JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Name", "Color", "Manufacturer", "Category", "Price"}));
+		comboBox.setModel(
+				new DefaultComboBoxModel(new String[] { "Name", "Color", "Manufacturer", "Category", "Price" }));
 		comboBox.setBounds(467, 11, 119, 23);
 		comboBox.setSelectedIndex(-1);
 		contentPane.add(comboBox);
@@ -125,11 +119,10 @@ public class ItemTable extends JFrame {
 				model.removeRow(selectedRowIndex);
 				Imanager.removeItem(x);
 
-
 			}
 		});
 		btnRemove.setBounds(785, 86, 89, 23);
-		if(currentUsername.equals(""))
+		if (currentUsername.equals(""))
 			contentPane.add(btnRemove);
 
 		searchField = new JTextField();
@@ -138,7 +131,8 @@ public class ItemTable extends JFrame {
 		searchField.setColumns(10);
 
 		final JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Name", "Color", "Manufacturer", "Category", "Owner", "Price"}));
+		comboBox_1.setModel(new DefaultComboBoxModel(
+				new String[] { "Name", "Color", "Manufacturer", "Category", "Owner", "Price" }));
 		comboBox_1.setBounds(288, 11, 119, 23);
 		comboBox_1.setSelectedIndex(-1);
 		contentPane.add(comboBox_1);
@@ -156,16 +150,16 @@ public class ItemTable extends JFrame {
 		btnShowAll.setBounds(785, 120, 89, 23);
 		contentPane.add(btnShowAll);
 
-
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
 				boolean stat = DatabaseTools.saveItemData(Imanager.getItemList());
-				if(stat)
+				if (stat)
 					JOptionPane.showMessageDialog(null, "Changes applied.", "Status", JOptionPane.INFORMATION_MESSAGE);
 				else
-					JOptionPane.showMessageDialog(null, "Changes were not applied.", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Changes were not applied.", "Error",
+							JOptionPane.ERROR_MESSAGE);
 
 			}
 		});
@@ -232,17 +226,19 @@ public class ItemTable extends JFrame {
 				boolean exist1 = DatabaseTools.uniqueItemNamePerUser(currentUsername, name);
 				boolean exist2 = Imanager.uniqueItemNamePerUser(currentUsername, name);
 
-				if(name.equals("")||color.equals("")||manufacturer.equals("")||category.equals("")||OwnerUsername.equals("")||pricePerHour.equals(""))
+				if (name.equals("") || color.equals("") || manufacturer.equals("") || category.equals("")
+						|| OwnerUsername.equals("") || pricePerHour.equals(""))
 					emp = true;
-				else 
+				else
 					emp = false;
 
-				if(emp)
-					JOptionPane.showMessageDialog(null, "Make sure to fill all boxes before proceeding.", "Error", JOptionPane.WARNING_MESSAGE);
-				else if(exist1 || exist2)
-					JOptionPane.showMessageDialog(null, "Each account cannot have more than 1 item with the same name.", "Error", JOptionPane.WARNING_MESSAGE);
-				else 
-				{
+				if (emp)
+					JOptionPane.showMessageDialog(null, "Make sure to fill all boxes before proceeding.", "Error",
+							JOptionPane.WARNING_MESSAGE);
+				else if (exist1 || exist2)
+					JOptionPane.showMessageDialog(null, "Each account cannot have more than 1 item with the same name.",
+							"Error", JOptionPane.WARNING_MESSAGE);
+				else {
 					try {
 						int price = Integer.parseInt(pricePerHour);
 						Item hold = new Item(name, color, manufacturer, category, OwnerUsername, price);
@@ -250,16 +246,16 @@ public class ItemTable extends JFrame {
 						JOptionPane.showMessageDialog(null, "Item added.", "Status", JOptionPane.INFORMATION_MESSAGE);
 						ItemTable.emptyFields();
 						ItemTable.showAll(table, Imanager);
-					} catch (NumberFormatException o)
-					{
-						JOptionPane.showMessageDialog(null, "Please enter a number in Price.", "Error", JOptionPane.WARNING_MESSAGE);
+					} catch (NumberFormatException o) {
+						JOptionPane.showMessageDialog(null, "Please enter a number in Price.", "Error",
+								JOptionPane.WARNING_MESSAGE);
 						priceField.setText("");
 					}
 				}
 			}
 		});
 		btnAdd.setBounds(438, 232, 89, 23);
-		if(!currentUsername.equals(""))
+		if (!currentUsername.equals(""))
 			contentPane.add(btnAdd);
 
 		JLabel lblCategory = new JLabel("Category");
@@ -285,13 +281,14 @@ public class ItemTable extends JFrame {
 		JButton btnSignOut = new JButton("Sign out");
 		btnSignOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Thank you for using RentIt.", "Good bye", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Thank you for using RentIt.", "Good bye",
+						JOptionPane.INFORMATION_MESSAGE);
 				new Management();
 				dispose();
 			}
 		});
 		btnSignOut.setBounds(785, 382, 89, 23);
-		if(!currentUsername.equals(""))
+		if (!currentUsername.equals(""))
 			contentPane.add(btnSignOut);
 
 		JLabel lblpriceIsCalculated = new JLabel("*Price is calculated dollars/hour");
@@ -302,17 +299,17 @@ public class ItemTable extends JFrame {
 		btnShowMyItems.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ArrayList<Integer> results = Imanager.searchByMyItem(currentUsername);
-				DefaultTableModel model = (DefaultTableModel)table.getModel();
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
 				model.setRowCount(0);
 
-				if(results.size()==0) {
-					JOptionPane.showMessageDialog(null, "It seems like you don't have any items yet.", "Oops", JOptionPane.INFORMATION_MESSAGE);
+				if (results.size() == 0) {
+					JOptionPane.showMessageDialog(null, "It seems like you don't have any items yet.", "Oops",
+							JOptionPane.INFORMATION_MESSAGE);
 					ItemTable.showAll(table, Imanager);
 				}
-				for(int i = 0; i<Imanager.getItemList().size(); i++) {
-					for(int j=0; j<results.size(); j++) {
-						if(i==results.get(j)) 
-						{
+				for (int i = 0; i < Imanager.getItemList().size(); i++) {
+					for (int j = 0; j < results.size(); j++) {
+						if (i == results.get(j)) {
 							String name = Imanager.getItem(i).getName();
 							String color = Imanager.getItem(i).getColor();
 							String manufacturer = Imanager.getItem(i).getManufacturer();
@@ -321,13 +318,14 @@ public class ItemTable extends JFrame {
 							int pricePerHour = Imanager.getItem(i).getPricePerHour();
 							boolean status = Imanager.getItem(i).getRentStatus();
 							String rentStatus;
-							if(status)
+							if (status)
 								rentStatus = "Available";
 							else
 								rentStatus = "Rented";
 							String rentorUsername = Imanager.getItem(i).getRentorUsername();
 
-							Object[] data = {name, color, manufacturer, category, ownerUsername, pricePerHour, rentStatus, rentorUsername};
+							Object[] data = { name, color, manufacturer, category, ownerUsername, pricePerHour,
+									rentStatus, rentorUsername };
 							model.addRow(data);
 						}
 					}
@@ -345,7 +343,7 @@ public class ItemTable extends JFrame {
 			}
 		});
 		btnClearText.setBounds(159, 230, 89, 23);
-		if(!currentUsername.equals(""))
+		if (!currentUsername.equals(""))
 			contentPane.add(btnClearText);
 
 		JButton btnEdit = new JButton("Edit");
@@ -360,55 +358,59 @@ public class ItemTable extends JFrame {
 				String category = categoryField.getText();
 				String priceStr = priceField.getText();
 
-
-
 				boolean emp;
 				boolean isOwner;
 
-				if(name.equals("")||color.equals("")||manufacturer.equals("")||category.equals("")||priceStr.equals(""))
+				if (name.equals("") || color.equals("") || manufacturer.equals("") || category.equals("")
+						|| priceStr.equals(""))
 					emp = true;
-				else 
+				else
 					emp = false;
-				if(emp)
-					JOptionPane.showMessageDialog(null, "Make sure to fill all boxes before proceeding.", "Error", JOptionPane.WARNING_MESSAGE);
+				if (emp)
+					JOptionPane.showMessageDialog(null, "Make sure to fill all boxes before proceeding.", "Error",
+							JOptionPane.WARNING_MESSAGE);
 				else {
 					try {
 						int price = Integer.parseInt(priceStr);
 						ArrayList<Integer> x = Imanager.searchByName(name);
 						ArrayList<Integer> y = Imanager.searchByOwnerUsername(currentUsername);
-						if(x.size()!=0 && y.size()!=0) {
+						if (x.size() != 0 && y.size() != 0) {
 							int z = ItemTable.findIntercept(x, y);
 							isOwner = model.getValueAt(selectedRowIndex, 4).toString().equals(currentUsername);
-							if(isOwner && (z!=-1)) {
+							if (isOwner && (z != -1)) {
 								model.removeRow(selectedRowIndex);
 								Item hold = new Item(newName, color, manufacturer, category, currentUsername, price);
 								Imanager.removeItem(z);
 								Imanager.addItem(hold);
 								ItemTable.emptyFields();
-								JOptionPane.showMessageDialog(null, "Edit applied. Make sure to save before signing out.", "Saved.", JOptionPane.INFORMATION_MESSAGE);
-							}else
-								JOptionPane.showMessageDialog(null, "Either you do not have permission to edit this item or it does not exist in our database.", "Error", JOptionPane.WARNING_MESSAGE);
+								JOptionPane.showMessageDialog(null,
+										"Edit applied. Make sure to save before signing out.", "Saved.",
+										JOptionPane.INFORMATION_MESSAGE);
+							} else
+								JOptionPane.showMessageDialog(null,
+										"Either you do not have permission to edit this item or it does not exist in our database.",
+										"Error", JOptionPane.WARNING_MESSAGE);
 						} else {
-							JOptionPane.showMessageDialog(null, "This item does not exist in our database.", "Error", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "This item does not exist in our database.", "Error",
+									JOptionPane.WARNING_MESSAGE);
 						}
 						ItemTable.showAll(table, Imanager);
 
-					} catch (NumberFormatException o)
-					{
-						JOptionPane.showMessageDialog(null, "Please enter a number in price.", "Error", JOptionPane.WARNING_MESSAGE);
+					} catch (NumberFormatException o) {
+						JOptionPane.showMessageDialog(null, "Please enter a number in price.", "Error",
+								JOptionPane.WARNING_MESSAGE);
 						priceField.setText("");
 					}
 				}
 			}
-		}
-				);
+		});
 		btnEdit.setBounds(309, 230, 89, 23);
-		if(!currentUsername.equals(""))
+		if (!currentUsername.equals(""))
 			contentPane.add(btnEdit);
 
 		JLabel lblProjectedIncomePer = new JLabel("Projected income per hour if all items are rent:");
 		lblProjectedIncomePer.setBounds(398, 230, 271, 14);
-		if(currentUsername.equals(""))
+		if (currentUsername.equals(""))
 			contentPane.add(lblProjectedIncomePer);
 
 		int projectedIncome = ItemManager.estimateIncome(0, Imanager.getItemList());
@@ -417,7 +419,7 @@ public class ItemTable extends JFrame {
 		lblNewLabel.setForeground(Color.RED);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel.setBounds(668, 230, 107, 14);
-		if(currentUsername.equals(""))
+		if (currentUsername.equals(""))
 			contentPane.add(lblNewLabel);
 
 		JButton btnBook = new JButton("Book");
@@ -434,62 +436,68 @@ public class ItemTable extends JFrame {
 				String category = model.getValueAt(selectedRowIndex, 3).toString();
 				String owner = model.getValueAt(selectedRowIndex, 4).toString();
 				int pricePerHour = Integer.parseInt(model.getValueAt(selectedRowIndex, 5).toString());
-				
+
 				int x = Imanager.searchByName(name).get(0);
 				isOwner = owner.equals(currentUsername);
-				if(statStr.equals("Available"))
+				if (statStr.equals("Available"))
 					stat = true;
 				else
 					stat = false;
 
-				if(stat && (!isOwner)) {
-					Item hold = new Item(name, color, manufacturer, category, owner, pricePerHour, false, currentUsername);
+				if (stat && (!isOwner)) {
+					Item hold = new Item(name, color, manufacturer, category, owner, pricePerHour, false,
+							currentUsername);
 					Imanager.getItemList().set(x, hold);
-					JOptionPane.showMessageDialog(null, "Item booked successfully.", "Booked", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Item booked successfully.", "Booked",
+							JOptionPane.INFORMATION_MESSAGE);
 					ItemTable.showAll(table, Imanager);
-				} else if(isOwner==true)
-					JOptionPane.showMessageDialog(null, "You cannot rent your own item.", "Error", JOptionPane.WARNING_MESSAGE);
+				} else if (isOwner == true)
+					JOptionPane.showMessageDialog(null, "You cannot rent your own item.", "Error",
+							JOptionPane.WARNING_MESSAGE);
 				else
 					JOptionPane.showMessageDialog(null, "This item is rented.", "Error", JOptionPane.WARNING_MESSAGE);
 			}
 		});
 		btnBook.setBounds(785, 188, 89, 23);
-		if(!currentUsername.equals(""))
+		if (!currentUsername.equals(""))
 			contentPane.add(btnBook);
 
 		JButton btnReturn = new JButton("Return");
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int selectedRowIndex = table.getSelectedRow();
-				DefaultTableModel model = (DefaultTableModel)table.getModel();
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
 				String name = (model.getValueAt(selectedRowIndex, 0).toString());
 				String color = (model.getValueAt(selectedRowIndex, 1).toString());
-				String manufacturer=(model.getValueAt(selectedRowIndex, 2).toString());
-				String category=(model.getValueAt(selectedRowIndex, 3).toString());
+				String manufacturer = (model.getValueAt(selectedRowIndex, 2).toString());
+				String category = (model.getValueAt(selectedRowIndex, 3).toString());
 				int x = Imanager.searchByName(name).get(0);
 
 				boolean stat;
 				boolean isOwner;
 
-				stat= Imanager.getItemList().get(x).getRentStatus();
+				stat = Imanager.getItemList().get(x).getRentStatus();
 				isOwner = model.getValueAt(selectedRowIndex, 4).toString().equals(currentUsername);
 
-				if(isOwner) {
+				if (isOwner) {
 					String priceStr = (model.getValueAt(selectedRowIndex, 5).toString());
 					int price = Integer.parseInt(priceStr);
 					Item hold = new Item(name, color, manufacturer, category, currentUsername, price);
 					Imanager.getItemList().set(x, hold);
-					JOptionPane.showMessageDialog(null, "Item returned successfully.", "Status", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Item returned successfully.", "Status",
+							JOptionPane.INFORMATION_MESSAGE);
 				} else if (stat)
-					JOptionPane.showMessageDialog(null, "This item is available for rent.", "Error", JOptionPane.INFORMATION_MESSAGE);
-				else if(!isOwner)
-					JOptionPane.showMessageDialog(null, "This can only be confirmed by the owner.", "Error", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "This item is available for rent.", "Error",
+							JOptionPane.INFORMATION_MESSAGE);
+				else if (!isOwner)
+					JOptionPane.showMessageDialog(null, "This can only be confirmed by the owner.", "Error",
+							JOptionPane.WARNING_MESSAGE);
 
 				ItemTable.showAll(table, Imanager);
 			}
 		});
 		btnReturn.setBounds(785, 222, 89, 23);
-		if(!currentUsername.equals(""))
+		if (!currentUsername.equals(""))
 			contentPane.add(btnReturn);
 
 		JButton btnRemoveMyItem = new JButton("Remove my item");
@@ -497,36 +505,38 @@ public class ItemTable extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				boolean isOwner;
 				int selectedRowIndex = table.getSelectedRow();
-				DefaultTableModel model = (DefaultTableModel)table.getModel();
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
 				String owner = (model.getValueAt(selectedRowIndex, 4).toString());
 				String name = (model.getValueAt(selectedRowIndex, 0).toString());
 				int x = Imanager.searchByName(name).get(0);
-				isOwner= owner.equals(currentUsername);
-				if(isOwner==true) {
+				isOwner = owner.equals(currentUsername);
+				if (isOwner == true) {
 					model.removeRow(selectedRowIndex);
 					Imanager.removeItem(x);
-					JOptionPane.showMessageDialog(null, "Item removed successfully.", "Status", JOptionPane.INFORMATION_MESSAGE);
-				} else if(isOwner==false)
-					JOptionPane.showMessageDialog(null, "You do not own this item.", "Error", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Item removed successfully.", "Status",
+							JOptionPane.INFORMATION_MESSAGE);
+				} else if (isOwner == false)
+					JOptionPane.showMessageDialog(null, "You do not own this item.", "Error",
+							JOptionPane.WARNING_MESSAGE);
 			}
 		});
 		btnRemoveMyItem.setBounds(638, 232, 137, 23);
-		if(!currentUsername.equals(""))
+		if (!currentUsername.equals(""))
 			contentPane.add(btnRemoveMyItem);
 		setVisible(true);
 
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				Object selected = comboBox.getSelectedItem();
-				if(selected.toString().equals("Name")) {
+				if (selected.toString().equals("Name")) {
 					Imanager.sortByName();
-				} else if(selected.toString().equals("Color")) {
+				} else if (selected.toString().equals("Color")) {
 					Imanager.sortByColor();
-				} else if(selected.toString().equals("Manufacturer")) {
+				} else if (selected.toString().equals("Manufacturer")) {
 					Imanager.sortByManufacturer();
-				} else if(selected.toString().equals("Category")) {
+				} else if (selected.toString().equals("Category")) {
 					Imanager.sortByCategory();
-				} else if(selected.toString().equals("Price")) {
+				} else if (selected.toString().equals("Price")) {
 					Imanager.sortByPrice();
 				}
 
@@ -536,35 +546,35 @@ public class ItemTable extends JFrame {
 
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				String query= searchField.getText().trim();
+				String query = searchField.getText().trim();
 
 				Object selected_1 = comboBox_1.getSelectedItem();
 				ArrayList<Integer> results = new ArrayList<Integer>();
 
-				if(selected_1.toString().equals("Name")) {
+				if (selected_1.toString().equals("Name")) {
 					results = Imanager.searchByName(query);
-				} else if(selected_1.toString().equals("Color")) {
+				} else if (selected_1.toString().equals("Color")) {
 					results = Imanager.searchByColor(query);
-				} else if(selected_1.toString().equals("Manufacturer")) {
+				} else if (selected_1.toString().equals("Manufacturer")) {
 					results = Imanager.searchByManufacturer(query);
-				} else if(selected_1.toString().equals("Owner")) {
-					if(!query.isEmpty() || !query.equals(""))
+				} else if (selected_1.toString().equals("Owner")) {
+					if (!query.isEmpty() || !query.equals(""))
 						results = Imanager.searchByOwnerUsername(query);
-				} else if(selected_1.toString().equals("Price")) {
-					if(!query.isEmpty() || !query.equals(""))
+				} else if (selected_1.toString().equals("Price")) {
+					if (!query.isEmpty() || !query.equals(""))
 						results = Imanager.searchByPrice(query);
 				}
 
-				if(results.isEmpty() || searchField.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "No results. Please fill in the search bar if you did not.", "Error", JOptionPane.WARNING_MESSAGE);
+				if (results.isEmpty() || searchField.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "No results. Please fill in the search bar if you did not.",
+							"Error", JOptionPane.WARNING_MESSAGE);
 					ItemTable.showAll(table, Imanager);
 				} else {
-					DefaultTableModel model = (DefaultTableModel)table.getModel();
+					DefaultTableModel model = (DefaultTableModel) table.getModel();
 					model.setRowCount(0);
-					for(int i = 0; i<Imanager.getItemList().size(); i++) {
-						for(int j=0; j<results.size(); j++) {
-							if(i==results.get(j)) 
-							{
+					for (int i = 0; i < Imanager.getItemList().size(); i++) {
+						for (int j = 0; j < results.size(); j++) {
+							if (i == results.get(j)) {
 								String name = Imanager.getItem(i).getName();
 								String color = Imanager.getItem(i).getColor();
 								String manufacturer = Imanager.getItem(i).getManufacturer();
@@ -573,13 +583,14 @@ public class ItemTable extends JFrame {
 								int pricePerHour = Imanager.getItem(i).getPricePerHour();
 								boolean status = Imanager.getItem(i).getRentStatus();
 								String rentStatus;
-								if(status)
+								if (status)
 									rentStatus = "Available";
 								else
 									rentStatus = "Rented";
 								String rentorUsername = Imanager.getItem(i).getRentorUsername();
-								
-								Object[] data = {name, color, manufacturer, category, ownerUsername, pricePerHour, rentStatus, rentorUsername};
+
+								Object[] data = { name, color, manufacturer, category, ownerUsername, pricePerHour,
+										rentStatus, rentorUsername };
 								model.addRow(data);
 							}
 						}
@@ -587,14 +598,12 @@ public class ItemTable extends JFrame {
 				}
 			}
 
-
-
 		});
 		table.addMouseListener(new java.awt.event.MouseAdapter() {
 			@Override
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				int selectedRowIndex = table.getSelectedRow();
-				DefaultTableModel model = (DefaultTableModel)table.getModel();
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
 
 				nameField.setText(model.getValueAt(selectedRowIndex, 0).toString());
 				colorField.setText(model.getValueAt(selectedRowIndex, 1).toString());
@@ -602,16 +611,15 @@ public class ItemTable extends JFrame {
 				categoryField.setText(model.getValueAt(selectedRowIndex, 3).toString());
 				priceField.setText(model.getValueAt(selectedRowIndex, 5).toString());
 
-
 			}
 		});
 	}
 
-	public static void showAll( JTable table,ItemManager Imanager) {
-		DefaultTableModel model = (DefaultTableModel)table.getModel();
+	public static void showAll(JTable table, ItemManager Imanager) {
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.setRowCount(0);
 
-		for(int i = 0; i<Imanager.getItemList().size(); i++) {
+		for (int i = 0; i < Imanager.getItemList().size(); i++) {
 			String name = Imanager.getItem(i).getName();
 			String color = Imanager.getItem(i).getColor();
 			String manufacturer = Imanager.getItem(i).getManufacturer();
@@ -620,13 +628,14 @@ public class ItemTable extends JFrame {
 			int pricePerHour = Imanager.getItem(i).getPricePerHour();
 			boolean status = Imanager.getItem(i).getRentStatus();
 			String rentStatus;
-			if(status)
+			if (status)
 				rentStatus = "Available";
 			else
 				rentStatus = "Rented";
 			String rentorUsername = Imanager.getItem(i).getRentorUsername();
 
-			Object[] data = {name, color, manufacturer, category, ownerUsername, pricePerHour, rentStatus, rentorUsername};
+			Object[] data = { name, color, manufacturer, category, ownerUsername, pricePerHour, rentStatus,
+					rentorUsername };
 			model.addRow(data);
 		}
 	}
@@ -638,12 +647,12 @@ public class ItemTable extends JFrame {
 		manufacturerField.setText("");
 		categoryField.setText("");
 	}
-	
-	//Find the intercept between 2 array lists
-	public static int findIntercept(ArrayList<Integer>x, ArrayList<Integer>y) {
-		for(int i=0; i<x.size(); i++) {
-			for(int j=0; j<y.size(); j++) {
-				if(x.get(i)==y.get(j))
+
+	// Find the intercept between 2 array lists
+	public static int findIntercept(ArrayList<Integer> x, ArrayList<Integer> y) {
+		for (int i = 0; i < x.size(); i++) {
+			for (int j = 0; j < y.size(); j++) {
+				if (x.get(i) == y.get(j))
 					return x.get(i);
 			}
 		}

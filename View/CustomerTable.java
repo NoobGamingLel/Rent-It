@@ -1,4 +1,5 @@
 package View;
+
 /** This class is a Jframe used to display information from the CustomerManager
  * Provides buttons to add and remove Customers
  * Fields to add and edit customer's information
@@ -56,16 +57,10 @@ class CustomerTable extends JFrame {
 		contentPane.add(scrollPane);
 
 		table = new JTable();
-		table.setModel(new DefaultTableModel(
-				new Object[][] {
-				},
-				new String[] {
-						"Username", "Last Name", "First Name", "Age", "Email"
-				}
-				) {
-			boolean[] columnEditables = new boolean[] {
-					false, false, false, false, false
-			};
+		table.setModel(new DefaultTableModel(new Object[][] {},
+				new String[] { "Username", "Last Name", "First Name", "Age", "Email" }) {
+			boolean[] columnEditables = new boolean[] { false, false, false, false, false };
+
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
 			}
@@ -82,7 +77,7 @@ class CustomerTable extends JFrame {
 		JButton btnClear = new JButton("Clear");
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DefaultTableModel model = (DefaultTableModel)table.getModel();
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
 				model.setRowCount(0);
 
 			}
@@ -95,7 +90,7 @@ class CustomerTable extends JFrame {
 		contentPane.add(lblSortBy);
 
 		final JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Username", "First Name", "Last Name", "Age"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] { "Username", "First Name", "Last Name", "Age" }));
 		comboBox.setBounds(465, 11, 119, 23);
 		comboBox.setSelectedIndex(-1);
 		contentPane.add(comboBox);
@@ -120,7 +115,7 @@ class CustomerTable extends JFrame {
 		searchField.setColumns(10);
 
 		final JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Username", "First Name", "Last Name", "Age"}));
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] { "Username", "First Name", "Last Name", "Age" }));
 		comboBox_1.setBounds(291, 11, 119, 23);
 		comboBox_1.setSelectedIndex(-1);
 		contentPane.add(comboBox_1);
@@ -138,16 +133,16 @@ class CustomerTable extends JFrame {
 		btnShowAll.setBounds(506, 123, 89, 23);
 		contentPane.add(btnShowAll);
 
-
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
 				boolean stat = DatabaseTools.saveCustomerData(Cmanager.getCustomerList());
-				if(stat)
+				if (stat)
 					JOptionPane.showMessageDialog(null, "Changes applied.", "Status", JOptionPane.INFORMATION_MESSAGE);
 				else
-					JOptionPane.showMessageDialog(null, "Changes were not applied.", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Changes were not applied.", "Error",
+							JOptionPane.ERROR_MESSAGE);
 
 			}
 		});
@@ -232,21 +227,21 @@ class CustomerTable extends JFrame {
 				boolean emp;
 				boolean exist1 = DatabaseTools.uniqueUsernameCheck(customerFilepath, username);
 				boolean exist2 = Cmanager.uniqueCustomerUsername(username);
-				if(username.equals("")||password.equals("")||lastName.equals("")||firstName.equals("")||email.equals("")||ageStr.equals(""))
+				if (username.equals("") || password.equals("") || lastName.equals("") || firstName.equals("")
+						|| email.equals("") || ageStr.equals(""))
 					emp = true;
-				else 
+				else
 					emp = false;
 
-				if(emp)
-					JOptionPane.showMessageDialog(null, "Make sure to fill all boxes before proceeding.", "Error", JOptionPane.WARNING_MESSAGE);
-				else 
-				{
-					if(username.toLowerCase().contains("admin")) {
-						JOptionPane.showMessageDialog(null, "Username cannot contain keyword 'Admin'.", "Error", JOptionPane.WARNING_MESSAGE);
+				if (emp)
+					JOptionPane.showMessageDialog(null, "Make sure to fill all boxes before proceeding.", "Error",
+							JOptionPane.WARNING_MESSAGE);
+				else {
+					if (username.toLowerCase().contains("admin")) {
+						JOptionPane.showMessageDialog(null, "Username cannot contain keyword 'Admin'.", "Error",
+								JOptionPane.WARNING_MESSAGE);
 						usernameField.setText("");
-					}
-					else if(exist1||exist2)
-					{
+					} else if (exist1 || exist2) {
 						JOptionPane.showMessageDialog(null, "Username taken.", "Error", JOptionPane.WARNING_MESSAGE);
 					} else {
 						try {
@@ -255,9 +250,9 @@ class CustomerTable extends JFrame {
 							Cmanager.addCustomer(hold);
 							CustomerTable.emptyFields();
 							CustomerTable.showAll(table, Cmanager);
-						} catch (NumberFormatException o)
-						{
-							JOptionPane.showMessageDialog(null, "Please enter a number in Age.", "Error", JOptionPane.WARNING_MESSAGE);
+						} catch (NumberFormatException o) {
+							JOptionPane.showMessageDialog(null, "Please enter a number in Age.", "Error",
+									JOptionPane.WARNING_MESSAGE);
 							ageField.setText("");
 						}
 					}
@@ -281,15 +276,16 @@ class CustomerTable extends JFrame {
 				String email = emailField.getText().trim();
 				int x = Cmanager.searchByUsername(username).get(0);
 
-
 				boolean emp;
 
-				if(username.equals("")||password.equals("")||lastName.equals("")||firstName.equals("")||email.equals("")||ageStr.equals(""))
+				if (username.equals("") || password.equals("") || lastName.equals("") || firstName.equals("")
+						|| email.equals("") || ageStr.equals(""))
 					emp = true;
-				else 
+				else
 					emp = false;
-				if(emp)
-					JOptionPane.showMessageDialog(null, "Make sure to fill all boxes before proceeding", "Error", JOptionPane.WARNING_MESSAGE);
+				if (emp)
+					JOptionPane.showMessageDialog(null, "Make sure to fill all boxes before proceeding", "Error",
+							JOptionPane.WARNING_MESSAGE);
 				else {
 					try {
 						int age = Integer.parseInt(ageStr);
@@ -298,19 +294,17 @@ class CustomerTable extends JFrame {
 						Cmanager.removeCustomer(x);
 						Cmanager.addCustomer(hold);
 						CustomerTable.emptyFields();
-						JOptionPane.showMessageDialog(null, "Edit applied. Make sure to save before signing out.", "Saved.", JOptionPane.INFORMATION_MESSAGE);
-
+						JOptionPane.showMessageDialog(null, "Edit applied. Make sure to save before signing out.",
+								"Saved.", JOptionPane.INFORMATION_MESSAGE);
 
 						CustomerTable.showAll(table, Cmanager);
 
-					} catch (NumberFormatException o)
-					{
-						JOptionPane.showMessageDialog(null, "Please enter a number in Age.", "Error", JOptionPane.WARNING_MESSAGE);
+					} catch (NumberFormatException o) {
+						JOptionPane.showMessageDialog(null, "Please enter a number in Age.", "Error",
+								JOptionPane.WARNING_MESSAGE);
 						ageField.setText("");
 					}
 				}
-
-
 
 			}
 		});
@@ -321,58 +315,58 @@ class CustomerTable extends JFrame {
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				Object selected = comboBox.getSelectedItem();
-				if(selected.toString().equals("Username")) {
+				if (selected.toString().equals("Username")) {
 					Cmanager.sortByUsername();
-				} else if(selected.toString().equals("First Name")) {
+				} else if (selected.toString().equals("First Name")) {
 					Cmanager.sortByFirstName();
-				} else if(selected.toString().equals("Last Name")) {
+				} else if (selected.toString().equals("Last Name")) {
 					Cmanager.sortByLastName();
-				} else if(selected.toString().equals("Age")) {
+				} else if (selected.toString().equals("Age")) {
 					Cmanager.sortByAge();
 				}
 
 				CustomerTable.showAll(table, Cmanager);
-
 
 			}
 		});
 
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				String query= searchField.getText().trim();
+				String query = searchField.getText().trim();
 
 				Object selected_1 = comboBox_1.getSelectedItem();
 				ArrayList<Integer> results = new ArrayList<Integer>();
 
-				if(selected_1.toString().equals("Username")) {
+				if (selected_1.toString().equals("Username")) {
 					results = Cmanager.searchByUsername(query);
-				} else if(selected_1.toString().equals("First Name")) {
+				} else if (selected_1.toString().equals("First Name")) {
 					results = Cmanager.searchByFirstName(query);
-				} else if(selected_1.toString().equals("Last Name")) {
+				} else if (selected_1.toString().equals("Last Name")) {
 					results = Cmanager.searchByLastName(query);
-				} else if(selected_1.toString().equals("Age")) {
-					if(!query.isEmpty() || !query.equals(""))
+				} else if (selected_1.toString().equals("Age")) {
+					if (!query.isEmpty() || !query.equals(""))
 						results = Cmanager.searchByAge(query);
 				}
 
-				if(results.isEmpty() || searchField.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "No results. Please fill in the search bar if you did not.", "Error", JOptionPane.WARNING_MESSAGE);
+				if (results.isEmpty() || searchField.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "No results. Please fill in the search bar if you did not.",
+							"Error", JOptionPane.WARNING_MESSAGE);
 					CustomerTable.showAll(table, Cmanager);
 				} else {
 
-					DefaultTableModel model = (DefaultTableModel)table.getModel();
+					DefaultTableModel model = (DefaultTableModel) table.getModel();
 					model.setRowCount(0);
 
-					for(int i = 0; i<Cmanager.getCustomerList().size(); i++) {
-						for(int j=0; j<results.size(); j++) {
-							if(i==results.get(j)) {
+					for (int i = 0; i < Cmanager.getCustomerList().size(); i++) {
+						for (int j = 0; j < results.size(); j++) {
+							if (i == results.get(j)) {
 								String username = Cmanager.getCustomer(i).getUsername();
 								String lname = Cmanager.getCustomer(i).getLastName();
-								String fname = Cmanager.getCustomer(i).getFirstName();     
+								String fname = Cmanager.getCustomer(i).getFirstName();
 								int age = Cmanager.getCustomer(i).getAge();
 								String email = Cmanager.getCustomer(i).getEmail();
 
-								Object[] data = {username, lname, fname, age, email};
+								Object[] data = { username, lname, fname, age, email };
 								model.addRow(data);
 							}
 						}
@@ -380,14 +374,12 @@ class CustomerTable extends JFrame {
 				}
 			}
 
-
-
 		});
 		table.addMouseListener(new java.awt.event.MouseAdapter() {
 			@Override
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				int selectedRowIndex = table.getSelectedRow();
-				DefaultTableModel model = (DefaultTableModel)table.getModel();
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
 
 				usernameField.setText(model.getValueAt(selectedRowIndex, 0).toString());
 				lastNameField.setText(model.getValueAt(selectedRowIndex, 1).toString());
@@ -395,24 +387,23 @@ class CustomerTable extends JFrame {
 				emailField.setText(model.getValueAt(selectedRowIndex, 4).toString());
 				ageField.setText(model.getValueAt(selectedRowIndex, 3).toString());
 
-
 			}
 		});
 	}
 
-	public static void showAll( JTable table,CustomerManager Cmanager) {
-		DefaultTableModel model = (DefaultTableModel)table.getModel();
+	public static void showAll(JTable table, CustomerManager Cmanager) {
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.setRowCount(0);
 
-		for(int i = 0; i<Cmanager.getCustomerList().size(); i++) {
+		for (int i = 0; i < Cmanager.getCustomerList().size(); i++) {
 			String username = Cmanager.getCustomer(i).getUsername();
 			String lname = Cmanager.getCustomer(i).getLastName();
-			String fname = Cmanager.getCustomer(i).getFirstName();    
+			String fname = Cmanager.getCustomer(i).getFirstName();
 			int age = Cmanager.getCustomer(i).getAge();
 			String email = Cmanager.getCustomer(i).getEmail();
 
-			Object[] data = {username, lname, fname, age, email};
-			model.addRow(data); 
+			Object[] data = { username, lname, fname, age, email };
+			model.addRow(data);
 		}
 	}
 

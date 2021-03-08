@@ -1,9 +1,11 @@
 package Model;
-/** This class is used as a blueprint to create Customer objects
- * Uses variables such as username and password from its super class
- * Uses variables such as first & last name, age and email to store other information.
+
+/**
+ * This class is used as a blueprint to create Customer objects Uses variables
+ * such as username and password from its super class Uses variables such as
+ * first & last name, age and email to store other information.
  */
-public class Customer extends User{
+public class Customer extends User {
 	private String firstName;
 	private String lastName;
 	private int age;
@@ -11,7 +13,8 @@ public class Customer extends User{
 
 	public Customer(String username, String password, String lastName, String firstName, int age, String email) {
 		super.setUsername(username);
-		super.setPassword(password);;
+		super.setPassword(password);
+		;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
@@ -64,14 +67,16 @@ public class Customer extends User{
 	 * @param username the username to set
 	 */
 	public void setUsername(String username) {
-		super.setUsername(username);;
+		super.setUsername(username);
+		;
 	}
 
 	/**
 	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
-		super.setPassword(password);;
+		super.setPassword(password);
+		;
 	}
 
 	/**
@@ -101,7 +106,5 @@ public class Customer extends User{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
 
 }

@@ -141,7 +141,7 @@ public class Management extends JFrame {
 		getContentPane().add(btnSignUp);
 
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("./Database/logo.jpg"));
+		label.setIcon(new ImageIcon("./View/logo.jpg"));
 		label.setBounds(42, 38, 350, 93);
 		getContentPane().add(label);
 		setVisible(true);

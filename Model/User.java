@@ -1,12 +1,15 @@
 package Model;
-/** An abstract class that has 2 variables 
- * Username and password which can be used by Customer and admin
+
+/**
+ * An abstract class that has 2 variables Username and password which can be
+ * used by Customer and admin
  */
 abstract class User {
 	private String username;
 	private String password;
-	
-	public User() {}
+
+	public User() {
+	}
 
 	/**
 	 * @return the username
@@ -34,5 +37,5 @@ abstract class User {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
-	}	
+	}
 }

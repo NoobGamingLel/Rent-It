@@ -1,4 +1,5 @@
 package View;
+
 /** This class is a Jframe used to display information from the AdminManager
  * Provides a button to add new admins.
  * This class is mainly for Administrative uses.
@@ -52,24 +53,18 @@ public class AdminTable extends JFrame {
 		contentPane.add(scrollPane);
 
 		table = new JTable();
-		table.setModel(new DefaultTableModel(
-				new Object[][] {
-				},
-				new String[] {
-						"Username", "Branch"
-				}
-				));
+		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Username", "Branch" }));
 		table.getColumnModel().getColumn(0).setPreferredWidth(125);
 		table.getColumnModel().getColumn(1).setPreferredWidth(125);
 		scrollPane.setViewportView(table);
 
-		for(int i = 0; i<Amanager.getAdminList().size(); i++) {
+		for (int i = 0; i < Amanager.getAdminList().size(); i++) {
 			String username = Amanager.getAdmin(i).getUsername();
 			String branch = Amanager.getAdmin(i).getBranch();
 
-			Object[] data = {username, branch};
-			DefaultTableModel model = (DefaultTableModel)table.getModel();
-			model.addRow(data); 
+			Object[] data = { username, branch };
+			DefaultTableModel model = (DefaultTableModel) table.getModel();
+			model.addRow(data);
 		}
 
 		JLabel lblNewUsernameField = new JLabel("New admin field");
@@ -107,7 +102,6 @@ public class AdminTable extends JFrame {
 		contentPane.add(branchField);
 		branchField.setColumns(10);
 
-
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -118,31 +112,30 @@ public class AdminTable extends JFrame {
 				boolean emp;
 				boolean exist1 = DatabaseTools.uniqueUsernameCheck(adminFilepath, username);
 				boolean exist2 = Amanager.uniqueAdminUsername(username);
-				if(username.equals("")||password.equals("")||branch.equals(""))
+				if (username.equals("") || password.equals("") || branch.equals(""))
 					emp = true;
-				else 
+				else
 					emp = false;
 
-				if(emp)
-					JOptionPane.showMessageDialog(null, "Make sure to fill all boxes before proceeding.", "Error", JOptionPane.WARNING_MESSAGE);
-				else 
-				{
-					if(exist1||exist2)
-					{
+				if (emp)
+					JOptionPane.showMessageDialog(null, "Make sure to fill all boxes before proceeding.", "Error",
+							JOptionPane.WARNING_MESSAGE);
+				else {
+					if (exist1 || exist2) {
 						JOptionPane.showMessageDialog(null, "Username taken.", "Error", JOptionPane.WARNING_MESSAGE);
 					} else {
 						boolean stat = DatabaseTools.register(username, password, branch);
-						if(stat) {
-							JOptionPane.showMessageDialog(null, "Account created.", "Error", JOptionPane.INFORMATION_MESSAGE);
+						if (stat) {
+							JOptionPane.showMessageDialog(null, "Account created.", "Error",
+									JOptionPane.INFORMATION_MESSAGE);
 							Admin hold = new Admin(username, password, branch);
 							Amanager.addAdmin(hold);
 							AdminTable.emptyFields();
 
 							AdminTable.showAll(table, Amanager);
-						}
-						else
-							JOptionPane.showMessageDialog(null, "Account cannot be created.", "Error", JOptionPane.WARNING_MESSAGE);
-
+						} else
+							JOptionPane.showMessageDialog(null, "Account cannot be created.", "Error",
+									JOptionPane.WARNING_MESSAGE);
 
 					}
 
@@ -161,16 +154,16 @@ public class AdminTable extends JFrame {
 		setVisible(true);
 	}
 
-	public static void showAll( JTable table,AdminManager Amanager) {
-		DefaultTableModel model = (DefaultTableModel)table.getModel();
+	public static void showAll(JTable table, AdminManager Amanager) {
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.setRowCount(0);
 
-		for(int i = 0; i<Amanager.getAdminList().size(); i++) {
+		for (int i = 0; i < Amanager.getAdminList().size(); i++) {
 			String username = Amanager.getAdmin(i).getUsername();
 			String branch = Amanager.getAdmin(i).getBranch();
 
-			Object[] data = {username, branch};
-			model.addRow(data); 
+			Object[] data = { username, branch };
+			model.addRow(data);
 		}
 	}
 
