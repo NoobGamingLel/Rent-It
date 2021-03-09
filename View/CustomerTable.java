@@ -45,7 +45,7 @@ class CustomerTable extends JFrame {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public CustomerTable(CustomerManager Cmanager) {
 		setTitle("Customer Manager");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 637, 444);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

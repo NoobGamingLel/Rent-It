@@ -43,7 +43,7 @@ public class AdminTable extends JFrame {
 	 */
 	public AdminTable(AdminManager Amanager) {
 		setTitle("Admin Table");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 456);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

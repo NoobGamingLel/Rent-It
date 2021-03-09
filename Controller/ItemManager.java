@@ -80,7 +80,6 @@ public class ItemManager {
 			if (this.itemList.get(i).getManufacturer().toLowerCase().contains(manufacturer.toLowerCase())) {
 				result.add(i);
 			}
-
 		}
 		return result;
 	}
