@@ -6,8 +6,6 @@ package View;
  */
 
 import Controller.*;
-import View.*;
-import Model.*;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

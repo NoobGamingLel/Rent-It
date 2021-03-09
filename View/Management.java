@@ -6,8 +6,6 @@ package View;
  * Provides a button to register for a new account
  */
 import Controller.*;
-import View.*;
-import Model.*;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
