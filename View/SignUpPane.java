@@ -33,22 +33,6 @@ public class SignUpPane extends JFrame {
 	final static String customerFilepath = "./Database/Customer/CustomerList.csv";
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SignUpPane frame = new SignUpPane();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public SignUpPane() {

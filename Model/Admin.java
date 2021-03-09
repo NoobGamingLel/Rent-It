@@ -15,19 +15,22 @@ public class Admin extends User {
 	}
 
 	/**
-	 * @return the username
+	 * @return the username of the admin
 	 */
 	public String getUsername() {
 		return super.getUsername();
 	}
 
 	/**
-	 * @return the password
+	 * @return The password of the admin
 	 */
 	public String getPassword() {
 		return super.getPassword();
 	}
 
+	/**
+	 * @return The branch of the admin
+	 */
 	public String getBranch() {
 		return this.branch;
 	}
@@ -46,6 +49,9 @@ public class Admin extends User {
 		super.setPassword(password);
 	}
 
+	/**
+	 * @param branch the branch to set
+	 */
 	public void setBranch(String branch) {
 		this.branch = branch;
 	}

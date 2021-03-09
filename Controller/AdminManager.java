@@ -15,30 +15,51 @@ public class AdminManager {
 	public AdminManager() {
 	}
 
-	/* Constructor with argument */
+	/**
+	 * Constructor for AdminManager
+	 * @param input ArrayList of Admin
+	 */
 	public AdminManager(ArrayList<Admin> input) {
 		adminList = input;
 	}
 
+	/**
+	 * Method to get he Admin at index i
+	 * @param i the index number of the Admin
+	 * @return The admin at specified index
+	 */
 	public Admin getAdmin(int i) {
 		return this.adminList.get(i);
 	}
 
+	/**
+	 * Method to get the ArrayList of Admins
+	 * @return The ArrayList of Admins
+	 */
 	public ArrayList<Admin> getAdminList() {
 		return this.adminList;
 	}
 
+	/**
+	 * Method to set the AdminList
+	 * @param input The new ArrayList of Admins
+	 */
 	public void setAdminList(ArrayList<Admin> input) {
 		this.adminList = input;
 	}
 
-	public void addAdmin(Admin x) {
-		this.adminList.add(x);
+	/**
+	 * Method to add an Admin
+	 * @param newAdmin the new Admin to be added
+	 */
+	public void addAdmin(Admin newAdmin) {
+		this.adminList.add(newAdmin);
 	}
 
-	/*
-	 * This method makes sure each username is unique Returns true if a same name is
-	 * found in the database False if it did not
+	/**
+	 * Method to check if usrename is unique by looking at the database
+	 * @param username The username of the admin
+	 * @return true if name already exists and false otherwise
 	 */
 	public boolean uniqueAdminUsername(String username) {
 		int arrSize = this.adminList.size();

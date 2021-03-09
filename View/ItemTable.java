@@ -44,13 +44,9 @@ public class ItemTable extends JFrame {
 	private static JTextField priceField;
 	private static JTextField categoryField;
 
-	/**
-	 * Launch the application.
-	 */
+	//Lanch application
 
-	/**
-	 * Create the frame.
-	 */
+	//Create frame
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public ItemTable(ItemManager Imanager, String currentUsername) {
 		setTitle("Item Manager");

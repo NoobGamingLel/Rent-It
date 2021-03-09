@@ -37,7 +37,9 @@ public class AdminTable extends JFrame {
 	 */
 
 	/**
-	 * Create the frame.
+	 * 
+	 * @param Amanager The admin manager
+	 * @return the AdminTable object
 	 */
 	public AdminTable(AdminManager Amanager) {
 		setTitle("Admin Table");

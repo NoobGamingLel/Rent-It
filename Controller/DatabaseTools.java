@@ -13,9 +13,7 @@ import Model.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.File;
-//import java.io.BufferedReader;
 import java.io.BufferedWriter;
-//import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
@@ -25,6 +23,10 @@ public class DatabaseTools {
 	private static final String adminFilepath = "./Database/Admin/AdminList.csv";
 	private static final String itemFilepath = "./Database/Item/ItemList.csv";;
 
+	/**
+	 * This method reads a file and return the ArrayList object of type Customer
+	 * @return ArrayList of type Customer
+	 */
 	public static ArrayList<Customer> loadCustomerData() {
 		String filepath = customerFilepath;
 		String userNm;
@@ -94,6 +96,10 @@ public class DatabaseTools {
 		return ItemList;
 	}
 
+	/**
+	 * 
+	 * @return The ArrayList of 
+	 */
 	public static ArrayList<Admin> loadAdminData() {
 		String filepath = adminFilepath;
 		String name;
@@ -120,6 +126,11 @@ public class DatabaseTools {
 		return AdminList;
 	}
 
+	/**
+	 * 
+	 * @param customerList ArrayList of Customer
+	 * @return True if save was successful. False otherwise.
+	 */
 	public static boolean saveCustomerData(ArrayList<Customer> customerList) {
 		String filepath = customerFilepath;
 		String tempFile = "tmpCus.csv";
@@ -172,6 +183,11 @@ public class DatabaseTools {
 		}
 	}
 
+	/**
+	 * 
+	 * @param itemList The ArrayList of items
+	 * @return True if saved successfully. False otherwise
+	 */
 	public static boolean saveItemData(ArrayList<Item> itemList) {
 		String filepath = itemFilepath;
 		String tempFile = "tmpItem.csv";
@@ -235,46 +251,12 @@ public class DatabaseTools {
 		}
 	}
 
-	// public static boolean saveAdminData(String filepath, ArrayList<Admin>
-	// adminList) {
-	// String tempFile = "tmp.csv";
-	// File oldFile = new File(filepath);
-	// File newFile = new File(tempFile);
-	//
-	// String username;
-	// String password;
-	// String branch;
-	//
-	// try
-	// {
-	// FileWriter fw = new FileWriter(tempFile, true);
-	// BufferedWriter bw = new BufferedWriter(fw);
-	// PrintWriter pw = new PrintWriter(bw);
-	// for(int i=0; i<adminList.size(); i++) {
-	// username = adminList.get(i).getUsername();
-	// password = adminList.get(i).getPassword();
-	// branch = adminList.get(i).getBranch();
-	//
-	// pw.print(username);
-	// pw.print(",");
-	// pw.print(password);
-	// pw.print(",");
-	// pw.print(branch);
-	// pw.print("\n");
-	//
-	// }
-	// x.close();
-	// pw.flush();
-	// pw.close();
-	// oldFile.delete();
-	// File dump = new File(filepath);
-	// newFile.renameTo(dump);
-	// return true;
-	// } catch (Exception e) {
-	// return false;
-	// }
-	// }
-
+	/**
+	 * 
+	 * @param filepath Path of file
+	 * @param username Username
+	 * @return True if the username exists in database. False otherwise
+	 */
 	public static boolean uniqueUsernameCheck(String filepath, String username) {
 		boolean found = false;
 		String userNm;
@@ -301,6 +283,12 @@ public class DatabaseTools {
 
 	}
 
+	/**
+	 * 
+	 * @param ownerUsername The name of the owner
+	 * @param itemName The name of the item
+	 * @return Return true if the current user already have an item of that name. False otherwise
+	 */
 	public static boolean uniqueItemNamePerUser(String ownerUsername, String itemName) {
 		String filepath = itemFilepath;
 		boolean found = false;
@@ -333,7 +321,12 @@ public class DatabaseTools {
 		}
 
 	}
-
+	/**
+	 * @param filepath the path of the file
+	 * @param usernameInput the username
+	 * @param charPasswordInput the passowrd
+	 * @return true if the username is found in the database, false otherwise
+	 */
 	public static boolean loginCheck(String filepath, String usernameInput, char[] charPasswordInput) {
 		boolean found = false;
 		String recUsername = "";

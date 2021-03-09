@@ -16,34 +16,67 @@ public class CustomerManager {
 
 	}
 
+	/**
+	 * Constructor for the CustomerManager class
+	 * @param input The ArrayList of Customers
+	 */
 	public CustomerManager(ArrayList<Customer> input) {
 		customerList = input;
 	}
 
+	/**
+	 * Method to get a customer at a specified index
+	 * @param n the index
+	 * @return Return the customer at the index
+	 */
 	public Customer getCustomer(int n) {
 		return customerList.get(n);
 	}
 
-	public void addCustomer(Customer x) {
-		this.customerList.add(x);
+	/**
+	 * Method to add new cusomter 
+	 * @param newCustomer The new customer object
+	 */
+	public void addCustomer(Customer newCustomer) {
+		this.customerList.add(newCustomer);
 	}
 
+	/**
+	 * Remove customer at specified index
+	 * @param n the index
+	 */
 	public void removeCustomer(int n) {
 		this.customerList.remove(n);
 	}
 
+	/**
+	 * Method to clear the customer list
+	 */
 	public void clearCustomerList() {
 		this.customerList.clear();
 	}
 
+	/**
+	 * Method to return the customer list
+	 * @return The ArrayList of Customer
+	 */
 	public ArrayList<Customer> getCustomerList() {
 		return this.customerList;
 	}
 
+	/**
+	 * Method to set the customer list
+	 * @param input The new ArrayList of customer
+	 */
 	public void setCustomerList(ArrayList<Customer> input) {
 		this.customerList = input;
 	}
 
+	/**
+	 * Check if username is unique
+	 * @param username the username that needs checking (String type)
+	 * @return True if the name is not unique. False otherwise.
+	 */
 	public boolean uniqueCustomerUsername(String username) {
 		int arrSize = this.customerList.size();
 		for (int i = 0; i < arrSize; i++) {
@@ -55,6 +88,11 @@ public class CustomerManager {
 		return false;
 	}
 
+	/**
+	 * Search for the username and return the list of integers that has matching index
+	 * @param username
+	 * @return Array list of matching index
+	 */
 	public ArrayList<Integer> searchByUsername(String username) {
 		ArrayList<Integer> result = new ArrayList<Integer>();
 		if (username.equals(""))
@@ -69,6 +107,11 @@ public class CustomerManager {
 		return result;
 	}
 
+	/**
+	 * Search for the first name and return the list of integers that has matching index
+	 * @param fname The first name
+	 * @return 
+	 */
 	public ArrayList<Integer> searchByFirstName(String fname) {
 
 		ArrayList<Integer> result = new ArrayList<Integer>();

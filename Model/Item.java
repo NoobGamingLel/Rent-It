@@ -115,24 +115,29 @@ public class Item {
 	}
 
 	/**
-	 * @param customer the customer to set
+	 * @param ownerUsername the owner's Username to set
 	 */
 	public void setOwnerUsername(String ownerUsername) {
 		this.ownerUsername = ownerUsername;
 	}
 
 	/**
-	 * @param rentInformation the rentInformation to set
+	 * @param pricePerHour the price per hour of item to set
 	 */
-
 	public void setPricePerHour(int pricePerHour) {
 		this.pricePerHour = pricePerHour;
 	}
 
+	/**
+	 * @param rentStatus the rent status of item to set
+	 */
 	public void setRentStatus(boolean rentStatus) {
 		this.rentStatus = rentStatus;
 	}
 
+	/**
+	 * @param rentorUsername the username of the rentor to set
+	 */
 	public void setRentorUsername(String rentorUsername) {
 		this.rentorUsername = rentorUsername;
 	}

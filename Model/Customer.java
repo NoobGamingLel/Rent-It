@@ -3,7 +3,7 @@ package Model;
 /**
  * This class is used as a blueprint to create Customer objects Uses variables
  * such as username and password from its super class Uses variables such as
- * first & last name, age and email to store other information.
+ * first and last name, age and email to store other information.
  */
 public class Customer extends User {
 	private String firstName;
@@ -14,7 +14,6 @@ public class Customer extends User {
 	public Customer(String username, String password, String lastName, String firstName, int age, String email) {
 		super.setUsername(username);
 		super.setPassword(password);
-		;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
@@ -22,42 +21,42 @@ public class Customer extends User {
 	}
 
 	/**
-	 * @return the username
+	 * @return the username of hte customer
 	 */
 	public String getUsername() {
 		return super.getUsername();
 	}
 
 	/**
-	 * @return the password
+	 * @return the password of the customer
 	 */
 	public String getPassword() {
 		return super.getPassword();
 	}
 
 	/**
-	 * @return the firstName
+	 * @return the first name of the user
 	 */
 	public String getFirstName() {
 		return firstName;
 	}
 
 	/**
-	 * @return the lastName
+	 * @return the last name of the user
 	 */
 	public String getLastName() {
 		return lastName;
 	}
 
 	/**
-	 * @return the age
+	 * @return the age of the user
 	 */
 	public int getAge() {
 		return age;
 	}
 
 	/**
-	 * @return the email
+	 * @return the email of the user
 	 */
 	public String getEmail() {
 		return email;
@@ -68,7 +67,6 @@ public class Customer extends User {
 	 */
 	public void setUsername(String username) {
 		super.setUsername(username);
-		;
 	}
 
 	/**
@@ -76,7 +74,6 @@ public class Customer extends User {
 	 */
 	public void setPassword(String password) {
 		super.setPassword(password);
-		;
 	}
 
 	/**
