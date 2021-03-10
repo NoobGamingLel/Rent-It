@@ -34,4 +34,5 @@ Now run the program by calling the file called **Simulation**:
 java Simulation
 ```
 
-You should now be prompted with the application window. Create an account to begin using.  
+You should now be prompted with the application window. Create an account to begin using.   
+<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embeddedchart/0f8cef1f-9ce8-4076-892f-30be8328aeb5" id="s6VieWvSSB9z"></iframe></div>
